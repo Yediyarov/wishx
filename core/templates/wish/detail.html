@@ -1,0 +1,348 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n base_filter %}
+{% block social %}
+    <!-- Facebook share header -->
+    <meta property="og:title" content="{{ wish.title }}">
+    <meta property="og:description" content="{{ wish.description|default_if_none:'' }}">
+    <meta property="og:image" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.get_host }}{{ wish.get_cover }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <!--Twitter header-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.get_host }}{{ wish.get_cover }}">
+    <meta name="twitter:image:alt" content="{{ wish.title }}">
+    <meta name="twitter:creator" content="@wishx"/>
+    <meta name="twitter:site" content="@wishx">
+{% endblock social %}
+{% block content %}
+    {% get_comment_form as comment_form %}
+    <div class="mt-8 mb-12">
+        <h1 class="page-header text-center">{{ wish.title }}</h1>
+
+        <section id="event-summary" class="event__summary">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <div class="summary__user mb-6 mb-lg-0">
+                        <div class="card__image-wrapper card__image-wrapper--summary">
+                            {% if wish.image %}
+                                <img class="card__image" src="{{ wish.image.url }}" alt="user photo">
+                            {% elif wish.user.profile_picture %}
+                                <img class="card__image" src="{{ wish.user.get_profile_picture }}" alt="user photo">
+                            {% else %}
+                                <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}"
+                                     alt="user photo">
+                            {% endif %}
+                        </div>
+                        <p class="summary__username mt-2 mt-lg-4 mb-0">{{ wish.get_full_name }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="summary__slides">
+                        <div class="owl-carousel owl-theme">
+                            {% for image in wish.images.all %}
+                                <div class="card__image-wrapper card__image-wrapper--slides"><img
+                                        src="{{ image.url.url }}" alt="" class="card__image w-auto"></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="event-info event-info--summary flex-wrap mt-5 mb-2">
+                        <div>
+                            <p class="event-info__header">{% trans 'Vaxt' %}</p>
+                            <p class="event-info__data">{{ wish.deadline|date:'SHORT_DATE_FORMAT' }}</p>
+                        </div>
+                        <div>
+                            <p class="event-info__header">{% trans 'Lazım olan məbləğ' %}</p>
+                            <p class="event-info__data">{{ wish.required_amount }} {{ wish.currency }}</p>
+                        </div>
+                        <div>
+                            <p class="event-info__header">{% trans 'Toplanan məbləğ' %}</p>
+                            <p class="event-info__data">{{ wish.accumulated_amount }} {{ wish.currency }}</p>
+                        </div>
+                        <div>
+                            <p class="event-info__header">{% trans 'Yardım sayı' %}</p>
+                            <p class="event-info__data">{{ wish.number_of_donations }}</p>
+                        </div>
+                    </div>
+                    <button class="button button--primary mb-2">{% trans 'Hədiyyə et' %}</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="event-description">
+            <h2 class="section-header text-center mt-10">{% trans 'Açıqlama' %}</h2>
+            <p class="paragraph">
+                {{ wish.description }}
+            </p>
+        </section>
+
+        {% if wish.donations.all %}
+            <section id="event-donations">
+            <h2 class="section-header text-center mt-10">{% trans 'Hədiyyə edənlər' %}</h2>
+            <ul class="m-0">
+                {% for donation in wish.donations.all %}
+                    <li id="" class="donation-list-item" data-id="{{ donation.pk }}">
+                        <div class="event__donation">
+                            <div class="donation__main p-4">
+                                <div class="d-flex align-items-center mb-3 mb-lg-0 donation__minwidth">
+                                    <div class="card__image-wrapper card__image-wrapper--donation mr-3">
+                                        {% if donation.user.profile_picture %}
+                                            <img class="card__image" src="{{ wish.user.get_profile_picture }}" alt="">
+                                        {% else %}
+                                            <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}"
+                                                 alt="">
+                                        {% endif %}
+                                    </div>
+                                    <div class="donation__info">
+                                        <div>
+                                            <a class="donation__username" href="">{{ donation.user.get_full_name }}</a>
+                                        </div>
+                                        <div>
+                                            <a href="" class="donation__time mr-2">{{ donation.since }}</a>
+                                            <span class="donation__likes mr-2" data-toggle="tooltip"
+                                                  data-placement="bottom"
+                                                  data-html="true">
+                                                <span class="donation_like_count">{{ donation.like_count }}</span> {% trans 'likes' %}
+                                            </span>
+                                            <a class="donation__reply-btn">{% trans 'reply' %}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="paragraph m-0">
+                                    {{ donation.comment }}
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center px-2 px-sm-0">
+                                <button class="donation__heart donation_heart" id="heart-btn-1"
+                                        data-id="{{ donation.pk }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                         xmlns:cc="http://creativecommons.org/ns#"
+                                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                         xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                         width="22.239443430326077"
+                                         height="22.46479531598186" style="">
+                                        <g class="currentLayer" style="">
+                                            {% is_liked donation.pk request.user.pk as liked %}
+                                            {% if liked %}
+                                                <path class="donation__heart--selected" fill="#00000000"
+                                                      stroke="#aaaaaa" stroke-width="2" id="svg-heart-1"
+                                                      d="M10.970745831792712,5.913504580780668 C15.081636838490851,-6.1490742336807775 31.18824258604674,5.913504580780668 10.970745831792712,21.422534485088224 C-9.246750922462226,5.913504580780668 6.859854825094118,-6.1490742336807775 10.970745831792712,5.913504580780668 z"/>
+                                            {% else %}
+                                                <path fill="#00000000" stroke="#aaaaaa" stroke-width="2"
+                                                      id="svg-heart-1"
+                                                      d="M10.970745831792712,5.913504580780668 C15.081636838490851,-6.1490742336807775 31.18824258604674,5.913504580780668 10.970745831792712,21.422534485088224 C-9.246750922462226,5.913504580780668 6.859854825094118,-6.1490742336807775 10.970745831792712,5.913504580780668 z"/>
+                                            {% endif %}
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center text-center donation__seperator px-2 px-sm-0">
+                                <span class="donation__amount">{{ donation.amount }} {{ donation.currency }}</span>
+                            </div>
+                        </div>
+                        {% if donation.get_all_replies %}
+                            {% for reply in donation.get_all_replies %}
+                                <div class="event__donation donation__comment">
+                                    <div class="donation__main p-4">
+                                        <div class="d-flex align-items-center mb-3 mb-lg-0 donation__minwidth">
+                                            <div class="card__image-wrapper card__image-wrapper--donation mr-3">
+                                                {% if reply.user.profile_picture %}
+                                                    <img class="card__image" src="{{ reply.user.get_profile_picture }}"
+                                                         alt="">
+                                                {% else %}
+                                                    <img class="card__image"
+                                                         src="{% static 'wishx/assets/default_user.png' %}"
+                                                         alt="">
+                                                {% endif %}
+                                            </div>
+                                            <div class="donation__info">
+                                                <div>
+                                                    <a class="donation__username"
+                                                       href="">{{ reply.user.get_full_name }}</a>
+                                                </div>
+                                                <div>
+                                                    <a href="" class="donation__time mr-2">{{ reply.since }}</a>
+                                                    <span href=""
+                                                          class="donation__likes mr-2"><span data-id="{{ reply.id }}" class="comment_like_count">{{ reply.like_count }}</span> {% trans 'likes' %}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="event__text m-0">
+                                            {{ reply.comment }}
+                                        </p>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center px-2 px-sm-0">
+                                        <button class="donation__heart comment_heart" id="heart-btn-1"
+                                                data-id="{{ reply.id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:se="http://svg-edit.googlecode.com"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                                 xmlns:cc="http://creativecommons.org/ns#"
+                                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                                 width="22.239443430326077"
+                                                 height="22.46479531598186" style="">
+                                                <g class="currentLayer" style="">
+                                                    {% is_liked_comment reply.id request.user.pk as liked_comment %}
+                                                    {% if liked_comment %}
+                                                        <path class="donation__heart--selected" fill="#00000000"
+                                                              stroke="#aaaaaa" stroke-width="2"
+                                                              id="svg-heart-1"
+                                                              d="M10.970745831792712,5.913504580780668 C15.081636838490851,-6.1490742336807775 31.18824258604674,5.913504580780668 10.970745831792712,21.422534485088224 C-9.246750922462226,5.913504580780668 6.859854825094118,-6.1490742336807775 10.970745831792712,5.913504580780668 z"/>
+                                                    {% else %}
+                                                        <path fill="#00000000" stroke="#aaaaaa" stroke-width="2"
+                                                              id="svg-heart-1"
+                                                              d="M10.970745831792712,5.913504580780668 C15.081636838490851,-6.1490742336807775 31.18824258604674,5.913504580780668 10.970745831792712,21.422534485088224 C-9.246750922462226,5.913504580780668 6.859854825094118,-6.1490742336807775 10.970745831792712,5.913504580780668 z"/>
+                                                    {% endif %}
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="donation__reply">
+                <div class="d-flex align-items-center">
+                    <div class="card__image-wrapper card__image-wrapper--reply mr-3">
+                        {% if request.user.profile_picture %}
+                            <img class="card__image" src="{{ request.user.get_profile_picture }}" alt="">
+                        {% else %}
+                            <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <form id="reply__form" class="d-flex align-items-center m-0 flex-grow-1">
+                        {% csrf_token %}
+                        <input type="hidden" id="comment-user" value="{{ request.user.username }}">
+                        <input type="hidden" id="wish-page-url" value="{% url 'donation-comment' wish.slug %}">
+                        <input type="hidden" id="like-dislike-url" value="{% url 'like-dislike' wish.slug %}">
+                        {{ comment_form.comment }}
+                        <button type="submit" class="reply__button">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <section id="event-donate">
+            <h2 class="section-header text-center mt-12">{% trans 'Hədiyyə et' %}</h2>
+            <div class="row justify-content-around">
+                <div class="col-sm-2">
+                    <h3 class="donate__header">{% trans 'Məbləğ' %}</h3>
+                </div>
+                <div class="col-sm-9">
+                    <form id="donate__form">
+                        <div class="donate__radio-group">
+                            <input class="donate__radio" type="radio" id="donate__radio-5" name="donate__amount"
+                                   value="5">
+                            <label class="donate__label" for="donate__radio-5">1 <span>₼</span></label>
+                            <input class="donate__radio" type="radio" id="donate__radio-10" name="donate__amount"
+                                   value="10">
+                            <label class="donate__label" for="donate__radio-10">10 <span>₼</span></label>
+                            <input class="donate__radio" type="radio" id="donate__radio-15" name="donate__amount"
+                                   value="15">
+                            <label class="donate__label" for="donate__radio-15">25 <span>₼</span></label>
+                            <input class="donate__radio" type="radio" id="donate__radio-20" name="donate__amount"
+                                   value="20">
+                            <label class="donate__label" for="donate__radio-20">50 <span>₼</span></label>
+                            <input class="donate__radio" type="radio" id="donate__radio-25" name="donate__amount"
+                                   value="25">
+                            <label class="donate__label mb-4" for="donate__radio-25">100 <span>₼</span></label>
+                        </div>
+                        <label class="d-flex align-items-center">
+                            <input type="checkbox" class="option-input checkbox mr-2" name="show-donation"/>
+                            <span class="terms">{% trans 'Məbləğin şərhdə görsənməyinə razı deyiləm' %}</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-sm-2">
+                    <h3 class="donate__header">{% trans 'Şərh' %}</h3>
+                </div>
+                <div class="col-sm-9">
+                    <textarea class="form-input w-100 textarea pt-4 mt-sm-2" form="donate__form" name="donate-comment"
+                              id="donate-comment" rows="6"></textarea>
+                    <label class="d-flex align-items-center mt-8">
+                        <input type="checkbox" class="option-input checkbox mr-2" name="terms-and-conditions"
+                               form="donate__form"/>
+                        <span class="terms">{% trans 'Şərtlərlə raziyam' %}</span>
+                    </label>
+                    <input class="button button--primary mt-8" type="submit" value="Hədiyyə et" form="donate__form">
+                </div>
+            </div>
+        </section>
+
+        <section id="event-share">
+            <h2 class="section-header text-center mt-16">{% trans 'Sosial mediada paylaş' %}</h2>
+            <ul class="d-flex justify-content-center">
+                <li class="mr-3 mr-sm-6"><a href="https://wa.me/?text={{ request.build_absolute_uri }}" target="_blank"><img class="event-share__item"
+                                                         src="{% static 'wishx/assets/whatsapp@2x.png' %}"
+                                                         alt=""></a></li>
+                <li class="mr-3 mr-sm-6"><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><img class="event-share__item"
+                                                         src="{% static 'wishx/assets/facebook1@2x.png' %}"
+                                                         alt=""></a></li>
+                <li class="mr-3 mr-sm-6"><a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text={{ wish.title }}" target="_blank"><img class="event-share__item"
+                                                         src="{% static 'wishx/assets/telegram@2x.png' %}"
+                                                         alt=""></a></li>
+                <li><a href="http://twitter.com/share?text={{ wish.description }}&url={{ request.build_absolute_uri }}" target="_blank"><img class="event-share__item" src="{% static 'wishx/assets/twitter@2x.png' %}"
+                                    alt=""></a></li>
+            </ul>
+        </section>
+
+        {# Mock up for comment #}
+        <section class="donation_mockup d-none">
+            <div class="event__donation donation__comment">
+                <div class="donation__main p-4">
+                    <div class="d-flex align-items-center mb-3 mb-lg-0 donation__minwidth">
+                        <div class="card__image-wrapper card__image-wrapper--donation mr-3">
+                            <img class="card__image"
+                                 src="#"
+                                 alt="">
+                        </div>
+                        <div class="donation__info">
+                            <div>
+                                <a class="donation__username"
+                                   href=""></a>
+                            </div>
+                            <div>
+                                <a href="" class="donation__time mr-2 comment-since">{% trans 'today' %}</a>
+                                <span href="" class="donation__likes mr-2"><span
+                                        class="comment_like_count">0</span> {% trans 'likes' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="event__text m-0"></p>
+                </div>
+                <div class="d-flex align-items-center justify-content-center px-2 px-sm-0">
+                    <button class="donation__heart comment_heart" id="heart-btn-1">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             xmlns:se="http://svg-edit.googlecode.com"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/"
+                             xmlns:cc="http://creativecommons.org/ns#"
+                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                             width="22.239443430326077"
+                             height="22.46479531598186" style="">
+                            <g class="currentLayer" style="">
+                                <path fill="#00000000" stroke="#aaaaaa" stroke-width="2"
+                                      id="svg-heart-1"
+                                      d="M10.970745831792712,5.913504580780668 C15.081636838490851,-6.1490742336807775 31.18824258604674,5.913504580780668 10.970745831792712,21.422534485088224 C-9.246750922462226,5.913504580780668 6.859854825094118,-6.1490742336807775 10.970745831792712,5.913504580780668 z"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}
+{% block extra_js %}
+    <script src="{% static 'backend/js/reconnecting-websocket.min.js' %}"></script>
+    <script src="{% static 'backend/js/websocket.js' %}"></script>
+{% endblock %}

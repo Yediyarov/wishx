@@ -1,0 +1,200 @@
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    {% load static i18n base_filter %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="tags for website">
+    <meta name="description" content="front-end starter">
+    <meta name="author" content="Labrin.net">
+    {% block social %}{% endblock %}
+    <title> Home - Wishx </title>
+    <link rel="stylesheet" href="{% static 'backend/css/style.css' %}">
+</head>
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_site_settings as site_settings %}
+{% get_menus as menus %}
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg row mt-2">
+        <a class="navbar-brand" href="{% url 'core:base-index' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="137" height="68.786" viewBox="0 0 137 68.786">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: #782cff
+                        }
+                    </style>
+                </defs>
+                <g id="logo" transform="translate(-245.44 -394.383)">
+                    <path id="Path_1662"
+                          d="M246.786 577.687s-4.771 24.3 3.648 24.3 12.348-11 12.348-11 1.291 11.562 8.082 11.562 15.884-9.448 17.231-38.485c0 0 .748-7.933-5.388-7.933a2.122 2.122 0 0 0-2.123 2.077c-.16 7.681-1.252 34.176-8.729 36.988 0 0-6.586 2.844.973-30.309 0 0 .973-5.763-3.891-5.613s-6.81 19.083-6.81 19.083-4.415 14.069-8.157 15.117.9-14.444.075-16.015-1.946-2.769-3.517-2.844-3.51 1.776-3.742 3.072z"
+                          class="cls-1" data-name="Path 1662" transform="translate(0 -139.383)"/>
+                    <path id="Path_1663"
+                          d="M559.377 634.5a104.3 104.3 0 0 0-3.591 29.655s1.947 3.455 5.324 1.617a1.93 1.93 0 0 0 1-1.608c.166-3.573 1.033-16.458 5.206-28.117a2.347 2.347 0 0 0-1.439-3.012 7.673 7.673 0 0 0-5.033-.116 2.345 2.345 0 0 0-1.467 1.581z"
+                          class="cls-1" data-name="Path 1663" transform="translate(-267.391 -205.222)"/>
+                    <path id="Path_1664"
+                          d="M593.031 537.032s1.236 3.348 5.632.965a1.485 1.485 0 0 0 .737-.95 30.761 30.761 0 0 1 3.2-8.11 1.226 1.226 0 0 0-.533-1.762 5.7 5.7 0 0 0-6.394.707c-3.54 3.089-2.642 9.15-2.642 9.15z"
+                          class="cls-1" data-name="Path 1664" transform="translate(-299.435 -113.857)"/>
+                    <path id="Path_1665"
+                          d="M637.378 585.061c.986-3.82 4.742-15.671 17.1-17.056a6.8 6.8 0 0 1 4.295.889 4.353 4.353 0 0 1 1.975 5.394c-1.571 5.5-7.746 4.378-7.3-.224 0 0-5.764 1.894-8.23 9.42a.83.83 0 0 0 1.074 1.043c2.727-1.016 8.324-2.442 11.478 1.156 3.592 4.1.112 11.394.112 11.394s-6.352 12.755-17.316 13.992a7.022 7.022 0 0 1-5.729-2.8c-1.552-2.3-1.538-11.532 3.738-12.057 1.976-.2 3.782 2.462 2.671 5.265a.583.583 0 0 0 .481.8c1.951.2 7.112-.276 11.156-9.676a3.141 3.141 0 0 0 .258-1.5c-.081-.971-.668-2.157-3.229-1.578-3.7.836-10.918 3.982-12.506-1.278a5.92 5.92 0 0 1-.028-3.184z"
+                          class="cls-1" data-name="Path 1665" transform="translate(-334.775 -149.572)"/>
+                    <path id="Path_1666"
+                          d="M834.534 441.277c-3.131 5.339-12.6 20.875-14.534 53.972 0 0 2.04 5.042 6.755 1.226 0 0 2.245-19.308 4.266-23.2 4.027-7.756 7.259-8.831 8.606-8.307s-.374 5.463-3.218 13.7-2.694 18.111-.075 20.206c1.764 1.411 3.9.175 5.109-.783a1.755 1.755 0 0 0 .587-1.894 17.655 17.655 0 0 1-.457-8.474c1.048-5.238 6.323-17.812 7.184-21.329.9-3.667-.673-7.495-5.388-7.558a19.185 19.185 0 0 0-9.953 2.919 79.549 79.549 0 0 1 9.579-20.056s-.479-4.422-4.675-3.332a6.246 6.246 0 0 0-3.786 2.91z"
+                          class="cls-1" data-name="Path 1666" transform="translate(-495.105 -37.748)"/>
+                    <path id="Path_1667"
+                          d="M1064.577 394.867a80.033 80.033 0 0 0-19.7 19.331s-1.576 6.089 2.225 6.66a1.931 1.931 0 0 0 1.767-.68c2.287-2.75 10.749-12.506 21.109-19.289a2.347 2.347 0 0 0 .669-3.271 7.672 7.672 0 0 0-3.945-3.128 2.345 2.345 0 0 0-2.125.377z"
+                          class="cls-1" data-name="Path 1667" transform="translate(-688.603)"/>
+                    <path id="Path_1668"
+                          d="M1058.263 398.7a76.267 76.267 0 0 1 14.82 18.25 3.641 3.641 0 0 1-2.423 5.431q-.237.045-.5.07a3.37 3.37 0 0 1-2.357-.788c-1.823-2.657-6.535-10.855-15.58-17.627a2.067 2.067 0 0 1-.191-3.065 8.472 8.472 0 0 1 4.236-2.719 2.216 2.216 0 0 1 1.995.448z"
+                          class="cls-1" data-name="Path 1668" transform="translate(-694.544 -3.272)"/>
+                </g>
+            </svg>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto text-right">
+                {% for menu in menus %}
+                    {% if menu.url == '/wish/create/' %}
+                        {% if request.user.is_authenticated %}
+                             {% can_create_wish request.user as can_create %}
+                                {% if can_create %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ menu.url }}">{{ menu.title }}</a>
+                                    </li>
+                                {% endif %}
+                        {% endif %}
+                    {% elif menu.url == '/' %}
+                        {% if not request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ menu.url }}">{{ menu.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ menu.url }}">{{ menu.title }}</a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ request.user.get_absolute_url }}">{% trans 'Account' %}</a>
+                    </li>
+                <hr class="d-lg-none">
+
+                <li class="nav-item d-lg-none">
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'account:login' %}"
+                           class="nav-link">{% trans 'Sign in' %}</a>
+                    {% endif %}
+                </li>
+            </ul>
+
+            {% if not request.user.is_authenticated %}
+                <a href="{% url 'account:login' %}"
+                   class="sign-in-button d-none d-lg-inline-block">{% trans 'Sign in' %}</a>
+            {% endif %}
+
+            <div class="float-right d-flex flex-column flex-lg-row align-items-lg-center">
+                {% if request.user.is_authenticated %}
+                    <div class="header__profile my-6 my-lg-0">
+                        <div class="card__image-wrapper card__image-wrapper--header">
+                            {% if request.user.profile_picture %}
+                                <img class="card__image" src="{{ request.user.get_profile_picture }}" alt="">
+                            {% else %}
+                                <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="">
+                            {% endif %}
+                        </div>
+                        <ul class="profile__links">
+                            <li><span>{{ request.user.get_full_name }}</span></li>
+                            <li><a href="{{ request.user.get_absolute_url }}">{% trans 'Şəxsi hesab' %}</a></li>
+                            <li><a href="{% url 'account:account-update' %}">{% trans 'Tənzimləmələr' %}</a></li>
+                            <hr class="m-0">
+                            <li><a href="{% url 'account:logout' %}">{% trans 'Çıxış' %}</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="navbar__language-wrapper">
+                    <button class="navbar__current-language">
+                        <span class="mr-2">{{ LANGUAGE_CODE|upper }}</span>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </button>
+                    <ul class="navbar__language-list">
+                        {% for lang in LANGUAGES %}
+                            <li {% if lang.0 == LANGUAGE_CODE %}class="active"{% endif %} data-lang="{{ lang.0 }}"><a
+                                    href="/{{ lang.0 }}/{{ request.get_full_path|slice:'4:' }}">{{ lang.0|upper }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="subscribe">
+    <p class="subscribe__text">{{ site_settings.footer_sign_up_title|default_if_none:'' }}</p>
+    <form class="subscribe__form" data-action="{% url 'core:subscribe' %}"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% get_subscribe_form as subscribe_form %}
+        {% for field in subscribe_form %}
+            {{ field }}
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        <button class="subscribe__button" type="submit">{% trans 'Abunə ol' %}</button>
+    </form>
+</div>
+
+<div class="container">
+    <footer class="row py-4 justify-content-between align-items-center">
+        <ul class="col-md-8 d-flex flex-wrap justify-content-center justify-content-md-start mb-2 mb-md-0">
+            <li class="footer__item footer__item--contacts"><a
+                    href="#">{{ site_settings.footer_copyright_text|default_if_none:'copyright@2019' }}</a></li>
+            <li class="footer__item footer__item--contacts"><a
+                    href="#">{{ site_settings.footer_contact_email|default_if_none:'info@wishx.az' }}</a></li>
+            <li class="footer__item footer__item--contacts"><a
+                    href="#">{{ site_settings.footer_contact_number|default_if_none:'+994 12 345 67 89' }}</a></li>
+        </ul>
+        <ul class="col-md-4 d-flex flex-wrap justify-content-center justify-content-md-end m-0">
+            <li class="footer__item footer__item--social"><a
+                    href="{{ site_settings.facebook_profile_url|default_if_none:'#' }}"><i class="fa fa-facebook-f"></i></a>
+            </li>
+            <li class="footer__item footer__item--social"><a
+                    href="{{ site_settings.twitter_profile_url|default_if_none:'#' }}"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="footer__item footer__item--social"><a
+                    href="{{ site_settings.instagram_profile_url|default_if_none:'#' }}"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li class="footer__item footer__item--social"><a
+                    href="{{ site_settings.youtube_profile_url|default_if_none:'#' }}"><i
+                    class="fa fa-youtube-play"></i></a></li>
+        </ul>
+    </footer>
+</div>
+{% block modal %}
+{% endblock %}
+<div id="snackbar"></div>
+<script type="text/javascript" src="{% static 'wishx/js/main.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% block extra_js %}
+{% endblock %}
+<script src="{% static 'backend/js/main.js' %}"></script>
+</body>
+</html>

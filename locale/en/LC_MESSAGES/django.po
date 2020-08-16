@@ -1,0 +1,750 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-19 16:41+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: base_user/admin.py:14
+msgid "Personal info"
+msgstr ""
+
+#: base_user/admin.py:17
+msgid "Permissions"
+msgstr ""
+
+#: base_user/admin.py:19
+msgid "Important dates"
+msgstr ""
+
+#: base_user/forms.py:16
+msgid "E-poçt"
+msgstr ""
+
+#: base_user/forms.py:18 base_user/forms.py:131
+msgid "Şifrə"
+msgstr ""
+
+#: base_user/forms.py:44
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: base_user/forms.py:46 base_user/forms.py:75 base_user/forms.py:99
+msgid "Password"
+msgstr ""
+
+#: base_user/forms.py:48
+msgid "Password confirmation"
+msgstr ""
+
+#: base_user/forms.py:50
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: base_user/forms.py:77 base_user/forms.py:101
+msgid ""
+"Raw şifrələr bazada saxlanmır, onları heç cürə görmək mümkün deyil bu "
+"istifadəçinin şifrəsidir, lakin siz onu dəyişə bilərsiziniz  <a href=\"../"
+"password/\">bu form</a>. vasitəsilə"
+msgstr ""
+
+#: base_user/forms.py:128
+msgid "Cari şifrə yanlışdır"
+msgstr ""
+
+#: base_user/forms.py:144 base_user/forms.py:207
+#: base_user/templates/account/edit-account.html:25 core/forms.py:51
+#: core/templates/wish/create.html:18 core/templates/wish/update.html:24
+msgid "Ad"
+msgstr ""
+
+#: base_user/forms.py:145 base_user/forms.py:209
+#: base_user/templates/account/edit-account.html:38
+#: base_user/templates/account/update-account.html:41 core/forms.py:56
+#: core/templates/wish/create.html:24 core/templates/wish/update.html:30
+msgid "Soyad"
+msgstr ""
+
+#: base_user/forms.py:146 base_user/forms.py:211
+#: base_user/templates/account/edit-account.html:105
+#: base_user/templates/account/update-account.html:106
+msgid "Email"
+msgstr ""
+
+#: base_user/forms.py:168 base_user/forms.py:176 base_user/forms.py:233
+#: base_user/forms.py:241
+msgid "Yalnız ingilis hərfləri"
+msgstr ""
+
+#: base_user/forms.py:255
+msgid "Hazırki Şifrə"
+msgstr ""
+
+#: base_user/forms.py:257 base_user/templates/account/update-account.html:113
+msgid "Köhnə şifrə"
+msgstr ""
+
+#: base_user/forms.py:261 base_user/templates/account/update-account.html:119
+msgid "Yeni şifrə"
+msgstr ""
+
+#: base_user/forms.py:268
+msgid "Yeni Şifrə"
+msgstr ""
+
+#: base_user/models.py:52
+msgid "username"
+msgstr ""
+
+#: base_user/models.py:53
+msgid ""
+"Tələb olunur. 75 simvol və ya az. Hərflər, Rəqəmlər və @/./+/-/_ simvollar."
+msgstr ""
+
+#: base_user/models.py:56
+msgid "Düzgün istifadəçi adı daxil edin."
+msgstr ""
+
+#: base_user/models.py:59
+msgid "first name"
+msgstr ""
+
+#: base_user/models.py:60
+msgid "last name"
+msgstr ""
+
+#: base_user/models.py:61
+msgid "email address"
+msgstr ""
+
+#: base_user/models.py:63
+msgid "cinsi"
+msgstr ""
+
+#: base_user/models.py:65
+msgid "staff status"
+msgstr ""
+
+#: base_user/models.py:66
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: base_user/models.py:68
+msgid "active"
+msgstr ""
+
+#: base_user/models.py:69
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: base_user/models.py:71
+msgid "date joined"
+msgstr ""
+
+#: base_user/models.py:73
+msgid "completed"
+msgstr ""
+
+#: base_user/templates/account/detail.html:22
+msgid "Arzularım"
+msgstr ""
+
+#: base_user/templates/account/detail.html:23
+msgid "Topladığım məbləğ"
+msgstr ""
+
+#: base_user/templates/account/detail.html:24
+msgid "Hədiyyə edənlərin sayı"
+msgstr ""
+
+#: base_user/templates/account/detail.html:32 core/templates/wish/create.html:5
+msgid "Arzu yarat"
+msgstr ""
+
+#: base_user/templates/account/detail.html:50
+#: core/templates/partials/wishes.html:21 core/templates/wish/create.html:42
+#: core/templates/wish/detail.html:53 core/templates/wish/update.html:48
+#: core/templates/wish/wishes.html:27
+msgid "Lazım olan məbləğ"
+msgstr ""
+
+#: base_user/templates/account/detail.html:54
+#: core/templates/partials/wishes.html:25 core/templates/wish/detail.html:57
+#: core/templates/wish/wishes.html:31
+msgid "Toplanan məbləğ"
+msgstr ""
+
+#: base_user/templates/account/detail.html:58
+#: core/templates/wish/detail.html:61
+msgid "Yardım sayı"
+msgstr ""
+
+#: base_user/templates/account/detail.html:73
+msgid "Bu arzunu silməyə əminsiniz?"
+msgstr ""
+
+#: base_user/templates/account/detail.html:77
+msgid "Sil"
+msgstr ""
+
+#: base_user/templates/account/detail.html:78
+msgid "Geri qayıt"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:10
+#: base_user/templates/account/update-account.html:10 core/models.py:133
+#: core/templates/wish/create.html:11 core/templates/wish/update.html:11
+msgid "Şəkil"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:49
+#: base_user/templates/account/update-account.html:55
+msgid "Doğum tarixi"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:56
+#: base_user/templates/account/register.html:75
+msgid "Gün"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:61
+#: base_user/templates/account/register.html:80
+#: base_user/templates/account/update-account.html:67
+msgid "Ay"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:62
+#: base_user/templates/account/register.html:81
+#: base_user/templates/account/update-account.html:68
+msgid "Yan"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:63
+#: base_user/templates/account/register.html:82
+#: base_user/templates/account/update-account.html:69
+msgid "Fev"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:64
+#: base_user/templates/account/register.html:83
+#: base_user/templates/account/update-account.html:70
+msgid "Mar"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:65
+#: base_user/templates/account/register.html:84
+#: base_user/templates/account/update-account.html:71
+msgid "Apr"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:66
+#: base_user/templates/account/register.html:85
+#: base_user/templates/account/update-account.html:72
+msgid "May"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:67
+#: base_user/templates/account/register.html:86
+#: base_user/templates/account/update-account.html:73
+msgid "İyun"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:68
+#: base_user/templates/account/register.html:87
+#: base_user/templates/account/update-account.html:74
+msgid "İyul"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:69
+#: base_user/templates/account/register.html:88
+#: base_user/templates/account/update-account.html:75
+msgid "Avq"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:70
+#: base_user/templates/account/register.html:89
+#: base_user/templates/account/update-account.html:76
+msgid "Sen"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:71
+#: base_user/templates/account/register.html:90
+#: base_user/templates/account/update-account.html:77
+msgid "Okt"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:72
+#: base_user/templates/account/register.html:91
+#: base_user/templates/account/update-account.html:78
+msgid "Noy"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:73
+#: base_user/templates/account/register.html:92
+#: base_user/templates/account/update-account.html:79
+msgid "Dek"
+msgstr ""
+
+#: base_user/templates/account/edit-account.html:111
+#: base_user/templates/account/update-account.html:126
+#: core/templates/wish/create.html:97 core/templates/wish/update.html:93
+msgid "Yadda saxla"
+msgstr ""
+
+#: base_user/templates/account/email/activation.html:3
+msgid "Salam"
+msgstr ""
+
+#: base_user/templates/account/email/activation.html:5
+msgid ""
+"Xahiş olunur aşağdakı ünvana daxil olaraq qeydiyyatınızı təsdiqləyəsiniz:"
+msgstr ""
+
+#: base_user/templates/account/email/password_reset_email.html:4
+#, python-format
+msgid ""
+"Bu emaili %(site_name)s saytında olan hesabınızın parolunu dəyişmək istəyi "
+"göndərdiyiniz üçün almısınız.."
+msgstr ""
+
+#: base_user/templates/account/email/password_reset_email.html:6
+msgid "Xahiş olunur aşağıdakı ünvana daxil olub yeni şifrə təyin edəsiniz:"
+msgstr ""
+
+#: base_user/templates/account/email/password_reset_email.html:10
+msgid "Xatırlatma üçün bildirək ki, göstərilən emaildən istifadə etməlisiniz:"
+msgstr ""
+
+#: base_user/templates/account/email/password_reset_email.html:12
+msgid "Saytımızdan istifadə etdiyiniz üçün təşəkkür edirik."
+msgstr ""
+
+#: base_user/templates/account/email/password_reset_email.html:14
+#, python-format
+msgid "%(site_name)s komandası"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:8
+#: base_user/templates/account/forget-done.html:8
+msgid "Şifrənin Bərpası"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:13
+msgid "Xahiş edirik yeni şifrənizi təyin edin:"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:19
+msgid "Yeni şifrə:"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:27
+msgid "Yeni şifrənin təkrarı:"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:38
+msgid "Dəyiş"
+msgstr ""
+
+#: base_user/templates/account/forget-confirm.html:47
+msgid ""
+"Xəta baş verdi. Ola bilsin ki, bu link daha öncə istifadə olunub. Xahiş "
+"edirik yenidən şifrə bərpasını yoxlayasınız."
+msgstr ""
+
+#: base_user/templates/account/forget-done.html:12
+msgid "Bərpa ilə bağlı mail, göstərilən mail ünvanına göndərildi."
+msgstr ""
+
+#: base_user/templates/account/forget-done.html:13
+msgid "Xahiş olunur mailinizi yoxlayasınız."
+msgstr ""
+
+#: base_user/templates/account/forget.html:8
+msgid "ŞİFRƏNİ UNUTMUSUNUZ?"
+msgstr ""
+
+#: base_user/templates/account/forget.html:21
+msgid "Göndər"
+msgstr ""
+
+#: base_user/templates/account/login.html:14
+msgid "Hesab"
+msgstr ""
+
+#: base_user/templates/account/login.html:89
+msgid "xatırla"
+msgstr ""
+
+#: base_user/templates/account/login.html:92
+msgid "şifrəni unutmusan?"
+msgstr ""
+
+#: base_user/templates/account/login.html:95
+#: base_user/templates/account/register-confirm.html:18
+#: base_user/templates/account/register.html:119
+msgid "Daxil ol"
+msgstr ""
+
+#: base_user/templates/account/login.html:96
+#: base_user/templates/account/register.html:13
+#: base_user/templates/account/register.html:118
+#: core/templates/home/index.html:15
+msgid "Qeydiyyat"
+msgstr ""
+
+#: base_user/templates/account/login.html:98
+#: base_user/templates/account/register.html:121
+msgid "yaxud"
+msgstr ""
+
+#: base_user/templates/account/register-confirm.html:7
+msgid "Qeydiyyatın təsdiqi"
+msgstr ""
+
+#: base_user/templates/account/register-confirm.html:11
+msgid "Xəta baş verdi! Aktivləşdirilmə baş tutmadı:"
+msgstr ""
+
+#: base_user/templates/account/register-confirm.html:16
+msgid "Hesabınız uğurla aktivləşdirildi."
+msgstr ""
+
+#: base_user/templates/account/register-confirm.html:17
+msgid "Daxil olmaq üçün aşağdakı keçiddən istifadə edin."
+msgstr ""
+
+#: base_user/templates/account/register-done.html:7
+msgid "Uğurla qeydiyyatdan keçdiniz!"
+msgstr ""
+
+#: base_user/templates/account/register-done.html:10
+msgid ""
+"Hesabınızı aktivləşdirmək üçün qeydiyyat zamanı bildirdiyiniz email-ə "
+"göndərilən emaili oxuyub, hesabınızı aktivləşdirin."
+msgstr ""
+
+#: base_user/templates/account/register.html:97
+msgid "İl"
+msgstr ""
+
+#: base_user/templates/account/update-account.html:127
+msgid "Profilə qayıt"
+msgstr ""
+
+#: base_user/tools/common.py:15
+msgid "qadın"
+msgstr ""
+
+#: base_user/tools/common.py:16
+msgid "kişi"
+msgstr ""
+
+#: base_user/views.py:103
+msgid "Hesabınızı aktivləşdirin"
+msgstr ""
+
+#: base_user/views.py:242 base_user/views.py:283
+msgid "Məlumatlar uğurla yeniləndi"
+msgstr ""
+
+#: core/forms.py:61 core/templates/wish/create.html:30
+#: core/templates/wish/update.html:36
+msgid "Tədbirin adı"
+msgstr ""
+
+#: core/forms.py:66
+msgid "Məsələn: menimarzum"
+msgstr ""
+
+#: core/forms.py:81 core/templates/wish/create.html:77
+#: core/templates/wish/update.html:83
+msgid "Video yüklə"
+msgstr ""
+
+#: core/forms.py:100
+msgid "Write a reply..."
+msgstr ""
+
+#: core/models.py:44
+msgid "name"
+msgstr ""
+
+#: core/models.py:45
+msgid "surname"
+msgstr ""
+
+#: core/models.py:46
+msgid "title"
+msgstr ""
+
+#: core/models.py:47
+msgid "short description"
+msgstr ""
+
+#: core/models.py:48
+msgid "image"
+msgstr ""
+
+#: core/models.py:49
+msgid "required amount"
+msgstr ""
+
+#: core/models.py:50
+msgid "currency"
+msgstr ""
+
+#: core/models.py:51
+msgid "accumulated amount"
+msgstr ""
+
+#: core/models.py:52
+msgid "number of donations"
+msgstr ""
+
+#: core/models.py:53
+msgid "deadline"
+msgstr ""
+
+#: core/models.py:54
+msgid "video url"
+msgstr ""
+
+#: core/models.py:55
+msgid "published"
+msgstr ""
+
+#: core/models.py:56
+msgid "deleted"
+msgstr ""
+
+#: core/models.py:91
+msgid "Arzu"
+msgstr ""
+
+#: core/models.py:92
+msgid "Arzular"
+msgstr ""
+
+#: core/models.py:96
+msgid "event title"
+msgstr ""
+
+#: core/models.py:110
+msgid "Tədbirin növü"
+msgstr ""
+
+#: core/models.py:111
+msgid "Tədbirin növləri"
+msgstr ""
+
+#: core/models.py:115
+msgid "Image url"
+msgstr ""
+
+#: core/models.py:134
+msgid "Şəkillər"
+msgstr ""
+
+#: core/models.py:148
+msgid "Məbləğ aralığı"
+msgstr ""
+
+#: core/models.py:149
+msgid "Məbləğ aralıqları"
+msgstr ""
+
+#: core/models.py:155
+msgid "comment for donation"
+msgstr ""
+
+#: core/models.py:170 core/models.py:202 core/templates/wish/detail.html:313
+msgid "today"
+msgstr ""
+
+#: core/models.py:172 core/models.py:204
+msgid " day ago"
+msgstr ""
+
+#: core/models.py:179
+msgid "Bağış (Hədiyyə)"
+msgstr ""
+
+#: core/models.py:180
+msgid "Bağış (Hədiyyələr)"
+msgstr ""
+
+#: core/models.py:188
+msgid "comment to donation"
+msgstr ""
+
+#: core/models.py:211
+msgid "Bağış commenti"
+msgstr ""
+
+#: core/models.py:212
+msgid "Bağış commentləri"
+msgstr ""
+
+#: core/models.py:227
+msgid "Bəyənmə"
+msgstr ""
+
+#: core/models.py:228
+msgid "Bəyənmələr"
+msgstr ""
+
+#: core/models.py:241 core/templates/additional/privacy-policy.html:5
+msgid "Privacy Policy"
+msgstr ""
+
+#: core/models.py:242
+msgid "Privacy Policies"
+msgstr ""
+
+#: core/options/tools.py:19
+msgid "Ad günü"
+msgstr ""
+
+#: core/templates/additional/howitworks.html:6
+msgid "How it works"
+msgstr ""
+
+#: core/templates/base/index.html:76
+msgid "Account"
+msgstr ""
+
+#: core/templates/base/index.html:83 core/templates/base/index.html:90
+msgid "Sign in"
+msgstr ""
+
+#: core/templates/base/index.html:105
+msgid "Şəxsi hesab"
+msgstr ""
+
+#: core/templates/base/index.html:106
+msgid "Tənzimləmələr"
+msgstr ""
+
+#: core/templates/base/index.html:108
+msgid "Çıxış"
+msgstr ""
+
+#: core/templates/base/index.html:143
+msgid "Abunə ol"
+msgstr ""
+
+#: core/templates/wish/create.html:36 core/templates/wish/update.html:42
+msgid "Tədbirin qısa təsviri"
+msgstr ""
+
+#: core/templates/wish/create.html:63 core/templates/wish/update.html:69
+msgid "Şəkil yüklə"
+msgstr ""
+
+#: core/templates/wish/create.html:69 core/templates/wish/update.html:75
+msgid "yüklə"
+msgstr ""
+
+#: core/templates/wish/create.html:83
+msgid "Arzu üçün qısa url"
+msgstr ""
+
+#: core/templates/wish/create.html:92
+msgid "Qaydalarla"
+msgstr ""
+
+#: core/templates/wish/create.html:92
+msgid "tanış oldum və razıyam"
+msgstr ""
+
+#: core/templates/wish/create.html:96 core/templates/wish/update.html:91
+msgid "Paylaş"
+msgstr ""
+
+#: core/templates/wish/detail.html:19
+msgid "Tədbir adı"
+msgstr ""
+
+#: core/templates/wish/detail.html:49
+msgid "Vaxt"
+msgstr ""
+
+#: core/templates/wish/detail.html:65 core/templates/wish/detail.html:232
+msgid "Hədiyyə et"
+msgstr ""
+
+#: core/templates/wish/detail.html:71
+msgid "Açıqlama"
+msgstr ""
+
+#: core/templates/wish/detail.html:78
+msgid "Hədiyyə edənlər"
+msgstr ""
+
+#: core/templates/wish/detail.html:102 core/templates/wish/detail.html:165
+#: core/templates/wish/detail.html:315
+msgid "likes"
+msgstr ""
+
+#: core/templates/wish/detail.html:104
+msgid "reply"
+msgstr ""
+
+#: core/templates/wish/detail.html:235
+msgid "Məbləğ"
+msgstr ""
+
+#: core/templates/wish/detail.html:258
+msgid "Məbləğin şərhdə görsənməyinə razı deyiləm"
+msgstr ""
+
+#: core/templates/wish/detail.html:265
+msgid "Şərh"
+msgstr ""
+
+#: core/templates/wish/detail.html:273
+msgid "Şərtlərlə raziyam"
+msgstr ""
+
+#: core/templates/wish/detail.html:281
+msgid "Sosial mediada paylaş"
+msgstr ""
+
+#: core/templates/wish/update.html:5
+msgid "Arzuda dəyişiklik et"
+msgstr ""
+
+#: core/templates/wish/wishes.html:6
+msgid "Tədbirlər"
+msgstr ""
+
+#: core/templates/wish/wishes.html:41
+msgid "Daha çox"
+msgstr ""
+
+#: wishX/settings.py:301
+msgid "Azerbaijani"
+msgstr ""
+
+#: wishX/settings.py:302
+msgid "Russian"
+msgstr ""
+
+#: wishX/settings.py:303
+msgid "English"
+msgstr ""

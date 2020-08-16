@@ -1,0 +1,25 @@
+{% extends 'base/index.html' %}
+{% load static i18n %}
+{% block content %}
+    <div class="auth py-5">
+        <div class="container">
+            <div class="row justify-content-center flex-column align-items-center">
+                <h2 class="text-center">{% block form_title %}{% trans 'Qeydiyyatın təsdiqi' %}{% endblock form_title %}</h2>
+                <div class="col-lg-7 my-5">
+                    {% if error %}
+                        <div class="alert alert-danger text-center">
+                            <p>{% trans 'Xəta baş verdi! Aktivləşdirilmə baş tutmadı:' %}</p>
+                            <!--<p>{{error}}</p>-->
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success text-center">
+                            <p>{% trans 'Hesabınız uğurla aktivləşdirildi.' %}</p>
+                            <p>{% trans 'Daxil olmaq üçün aşağdakı keçiddən istifadə edin.' %}</p>
+                            <button onclick="location.href='{% url 'account:login' %}';" type="button" class="button button--primary button--join-us">{% trans 'Daxil ol' %}</button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

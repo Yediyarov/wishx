@@ -1,0 +1,86 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n base_filter %}
+{% block content %}
+    <div class="mt-8 mb-12 text-center">
+            <div class="row">
+                <div class="col-md-6 col-lg-5 col-xl-4 mb-4">
+                    <div class="account-card d-flex flex-column align-items-center">
+                        <div class="position-relative">
+                            <div class="card__image-wrapper card__image-wrapper--account">
+                                {% if user.profile_picture %}
+                                    <img class="card__image" src="{{ user.get_profile_picture }}" alt="profile photo">
+                                {% else %}
+                                    <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="profile photo">
+                                {% endif %}
+                                <input class="d-none" type="file" name="" id="profile-photo-input" accept="image/jpeg, image/png">
+                            </div>
+                        </div>
+                        <h1 class="account-card__title mt-7 mb-0">{{ user.get_full_name }}</h1>
+                        <button onclick="location.href='{% url "account:account-update" %}';" id="edit-account" class="button button--secondary mt-5">Tənzimlə</button>
+                        <div class="account-card__info d-flex w-100 mt-11 text-left">
+                            <ul class="w-75 mb-0">
+                                <li>{% trans 'Arzularım' %}</li>
+                                <li>{% trans 'Topladığım məbləğ' %}</li>
+                                <li>{% trans 'Hədiyyə edənlərin sayı' %}</li>
+                            </ul>
+                            <ul class="w-25 mb-0 ml-3 font-weight-bold">
+                                <li>{{ user.get_wishs_count }}</li>
+                                <li>{{ user.get_accumulated_amount }} AZN</li>
+                                <li>{{ user.get_number_of_donations }}</li>
+                            </ul>
+                        </div>
+                        {% can_create_wish request.user as can_create %}
+                        {% if can_create %}
+                            <button onclick="location.href='{% url "core:create-wish" %}';" id="account-create-wish" class="button button--primary mt-11">{% trans 'Arzu yarat' %}</button>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7 col-xl-8">
+                    <div class="row">
+                        {% for wish in user.get_wishs %}
+                            <div class="col-lg-6 wish-card">
+                            <div class="events-card events-card--user">
+                                <div class="card__image-wrapper card__image-wrapper--user-event">
+                                    <img class="card__image" src="{{ wish.get_cover }}" alt="event photo">
+                                    <a class="user-events__name" href="{{ wish.get_absolute_url }}">{{ wish.title }}</a>
+                                    <div class="user-events__edit">
+                                        <button onclick="location.href='{% url "core:update-wish" wish.slug %}';" class="edit-event"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <button class="delete-event" data-slug="{{ wish.slug }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                                <div class="event-info event-info--user-events-card my-4">
+                                    <div>
+                                        <p class="event-info__header">{% trans 'Lazım olan məbləğ' %}</p>
+                                        <p class="event-info__data">{{ wish.required_amount }} {{ wish.currency }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="event-info__header">{% trans 'Toplanan məbləğ' %}</p>
+                                        <p class="event-info__data">{{ wish.accumulated_amount }} {{ wish.currency }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="event-info__header">{% trans 'Yardım sayı' %}</p>
+                                        <p class="event-info__data">{{ wish.number_of_donations }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+{% block modal %}
+    <div id="wish-delete-modal" class="wishx-modal">
+        <div class="modal__content">
+            <p>{% trans 'Bu arzunu silməyə əminsiniz?' %}</p>
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center">
+                <form id="delete-form">
+                    <input id="wish-delete-url" type="hidden" value="{% url 'core:delete-wish' %}">
+                    <button type="submit" class="button button--primary mr-sm-7 mb-3 mb-sm-0">{% trans 'Sil' %}</button>
+                    <button type="button" class="button button--secondary">{% trans 'Geri qayıt' %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

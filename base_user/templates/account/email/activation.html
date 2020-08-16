@@ -1,0 +1,8 @@
+{% load i18n %}
+{% autoescape off %}
+    {% trans 'Salam' %} {{ user.get_full_name }},
+
+    {% trans 'Xahiş olunur aşağdakı ünvana daxil olaraq qeydiyyatınızı təsdiqləyəsiniz:' %}
+
+    {{ protocol }}://{{ domain }}{% url 'account:register-confirm' uidb64=uid token=token %}
+{% endautoescape %}

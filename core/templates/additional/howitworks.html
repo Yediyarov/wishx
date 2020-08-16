@@ -1,0 +1,9 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n base_filter %}
+{% block content %}
+    {% get_howitworks_content as howitworks_content %}
+    <div class="mt-8 mb-12">
+        <h1 class="page-header text-center">{% trans 'How it works' %}</h1>
+        {{ howitworks_content.content|safe|default_if_none:'' }}
+    </div>
+{% endblock content %}

@@ -1,0 +1,129 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n %}
+{% block content %}
+    <div class="mt-8 mb-12">
+        <h1 class="page-header text-center mb-11">{% trans 'Arzu yarat' %}</h1>
+        <div class="row">
+            <div class="col-lg-8">
+                <form class="row" method="post" id="create-wish" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-photo">{% trans 'Şəkil' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div id="person-photo-btn" class="create__profile-photo"><span>+</span></div>
+                        {{ form.image }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-name">{% trans 'Ad' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.name }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-surname">{% trans 'Soyad' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.surname }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="event-name">{% trans 'Tədbirin adı' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.title }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="event-desc">{% trans 'Tədbirin qısa təsviri' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.description }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="required-amount">{% trans 'Lazım olan məbləğ' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div class="row m-0 align-items-baseline flex-nowrap">
+                            {{ form.required_amount }}
+                            {% for radio in form.currency %}
+                                {% if forloop.first %}
+                                    <label for="{{ radio.id_for_label }}" class="p-0 mr-4">
+                                        {{ radio.tag }}
+                                        <span class="create__currency-manat">{{ radio.choice_label }}</span>
+                                    </label>
+                                {% else %}
+                                    <label for="{{ radio.id_for_label }}" class="p-0">
+                                        {{ radio.tag }}
+                                        <span class="create__currency-usd">{{ radio.choice_label }}</span>
+                                    </label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="event-photo">{% trans 'Şəkil yüklə' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div class="col-7 p-0">
+                            <button class="button button--loader w-100 d-flex align-items-center justify-content-center"
+                                    id="event-photo-btn">
+                                <span class="mr-4">{% trans 'yüklə' %}</span>
+                                <i class="fa fa-arrow-up create__btn-icon"></i>
+                            </button>
+                            {{ form.multi_image }}
+                            <span class="terms" id="selected_img_count"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="identification-card-input">{% trans 'Şəxsiyyət vəsiqəsini yüklə' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div class="col-7 p-0">
+                            <button class="button button--loader w-100 d-flex align-items-center justify-content-center"
+                                    id="identification-card-btn">
+                                <span class="mr-4">{% trans 'yüklə' %}</span>
+                                <i class="fa fa-arrow-up create__btn-icon"></i>
+                            </button>
+                            {{ form.identification_card_image }}
+                            <span class="terms" id="identification_card_img_count"></span>
+                            <span class="error-text" id="file-error-text"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="event-video">{% trans 'Video yüklə' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.video }}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="event-video">{% trans 'Arzu üçün qısa url' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.slug }}
+                        {% if form.slug.errors %}
+                            <div class="alert alert-danger col text-center slug_error_message" role="alert">
+                                {% for error in form.slug.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-12 mb-7">
+                        <label class="d-flex align-items-center">
+                            <input type="checkbox" id="check_" class="option-input checkbox mr-2" name="terms-and-conditions"/>
+                            <span class="terms"><a href="#" class="">{% trans 'Qaydalarla' %}</a> {% trans 'tanış oldum və razıyam' %}</span>
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <button name="publish" value="publish" type="submit" class="button button--primary mr-7 mb-6 mb-sm-0">{% trans 'Paylaş' %}</button>
+                        <button name="save" value="save" type="submit" class="button button--secondary">{% trans 'Yadda saxla' %}</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 p-10 p-lg-0 mt-6">
+                <picture>
+                    <source media="(min-width: 600px)" srcset="{% static 'wishx/assets/arzuyaratsehife@2x.png' %}">
+                    <img src="{% static 'wishx/assets/arzuyaratsehife.png' %}" alt="qeydiyyat" class="w-100">
+                </picture>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

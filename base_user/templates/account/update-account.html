@@ -1,0 +1,134 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n %}
+{% block content %}
+    <div class="mt-8 mb-12">
+        <div class="row">
+            <div class="col-lg-8">
+                <form class="row" action="" id="edit-account" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-photo">{% trans 'Şəkil' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div class="position-relative d-inline-block">
+                            <div class="card__image-wrapper card__image-wrapper--account">
+                                {% if request.user.profile_picture %}
+                                    <img id="profile_img" class="card__image" src="{{ request.user.get_profile_picture }}" alt="profile photo">
+                                {% else %}
+                                    <img id="profile_img" class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="profile photo">
+                                {% endif %}
+                                {{ form.profile_picture }}
+                            </div>
+{#                            <button id="profile-photo-btn" class="card__add-image">+</button>#}
+                        <label class="card__add-image" for="profile-photo-input">+</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-name">Ad</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+{#                        <input class="form-input w-100" type="text" id="person-name" placeholder="Ad">#}
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <span class="text-danger">
+                                {% for error in form.first_name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-surname">{% trans 'Soyad' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+{#                        <input class="form-input w-100" type="text" id="person-surname" placeholder="Soyad">#}
+                         {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <span class="text-danger">
+                                {% for error in form.last_name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-birthday">{% trans 'Doğum tarixi' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        <div class="d-flex align-items-center justify-content-between w-100 flex-column flex-md-row">
+                            <div id="date-picker" class="d-flex align-items-center mb-3 mb-md-0">
+                                <div class="mr-2">
+                                    <select name="day" id="day-picker" required>
+                                        <option disabled selected value="">Gün</option>
+                                    </select>
+                                </div>
+                                <div class="mr-2">
+                                    <select name="month" required>
+                                        <option disabled selected value="">{% trans 'Ay' %}</option>
+                                        <option value="1">{% trans 'Yan' %}</option>
+                                        <option value="2">{% trans 'Fev' %}</option>
+                                        <option value="3">{% trans 'Mar' %}</option>
+                                        <option value="4">{% trans 'Apr' %}</option>
+                                        <option value="5">{% trans 'May' %}</option>
+                                        <option value="6">{% trans 'İyun' %}</option>
+                                        <option value="7">{% trans 'İyul' %}</option>
+                                        <option value="8">{% trans 'Avq' %}</option>
+                                        <option value="9">{% trans 'Sen' %}</option>
+                                        <option value="10">{% trans 'Okt' %}</option>
+                                        <option value="11">{% trans 'Noy' %}</option>
+                                        <option value="12">{% trans 'Dek' %}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="year" id="year-picker" required>
+                                        <option disabled selected value="">İl</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="gender-picker" class="d-flex flex-row flex-md-column">
+                                {% for radio in form.gender %}
+                                    {% if forloop.first %}
+                                        <label for="{{ radio.id_for_label }}" class="mr-4 mr-md-0 d-flex align-items-center">
+                                            {{ radio.tag }}
+                                            <span>{{ radio.choice_label }}</span>
+                                        </label>
+                                    {% else %}
+                                        <label for="{{ radio.id_for_label }}" class="d-flex align-items-center">
+                                            {{ radio.tag }}
+                                            <span>{{ radio.choice_label }}</span>
+                                        </label>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 p-2">
+                        <label class="create__input-label" for="person-email">{% trans 'Email' %}</label>
+                    </div>
+                    <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                        {{ form.email }}
+                    </div>
+                    {% if request.user.has_usable_password %}
+                        <div class="col-12 col-sm-5 p-2">
+                            <label class="create__input-label" for="person-old-password">{% trans 'Köhnə şifrə' %}</label>
+                        </div>
+                        <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                            {{ form.old_password }}
+                        </div>
+                        <div class="col-12 col-sm-5 p-2">
+                            <label class="create__input-label" for="person-new-password">{% trans 'Yeni şifrə' %}</label>
+                        </div>
+                        <div class="col-12 col-sm-7 mb-6 mb-sm-11">
+                            {{ form.password1 }}
+                        </div>
+                    {% endif %}
+                    <div class="col-12">
+                        <button class="button button--primary mr-7 mb-6 mb-sm-0" type="submit">{% trans 'Yadda saxla' %}</button>
+                        <button type="button" onclick="location.href='{{ request.user.get_absolute_url }}';" class="button button--secondary">{% trans 'Profilə qayıt' %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,151 @@
+{% extends 'base/index.html' %}
+{% block content  %}
+    {% load static i18n %}
+    <div class="row mt-6 mt-md-12 mb-10 flex-column-reverse flex-lg-row">
+        <div class="col-lg-6">
+            <picture>
+                <source media="(min-width: 700px)" srcset="{% static 'wishx/assets/qeydiyyatshekil@2x.png' %}">
+                <img src="{% static 'wishx/assets/qeydiyyatshekil.png' %}" alt="qeydiyyat" class="w-100">
+            </picture>
+        </div>
+        <div class="col-lg-6 d-flex flex-column align-items-center">
+            <h1 class="page-header">
+                {% trans 'Qeydiyyat' %}
+            </h1>
+            <form id="sign-up" class="form d-flex flex-column align-items-center" method="post">
+                {% csrf_token %}
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                    <div class="alert alert-danger col text-center error_message" role="alert">
+                        {% for error in form.first_name.errors %}{{ error }}{% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                    <div class="alert alert-danger col text-center error_message" role="alert">
+                        {% for error in form.last_name.errors %}{{ error }}{% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="alert alert-danger col text-center error_message" role="alert">
+                        {% for error in form.email.errors %}{{ error }}{% endfor %}
+                    </div>
+                {% endif %}
+                <div class="password-wrapper position-relative mb-5">
+                    {{ form.password1 }}
+                     {% if form.password1.errors %}
+                        <div class="alert alert-danger col text-center error_message" role="alert">
+                            {% for error in form.password1.errors %}{{ error }}{% endfor %}
+                        </div>
+                     {% endif %}
+                    <svg id="show-password" class="password-visibility position-absolute"
+                         xmlns="http://www.w3.org/2000/svg" width="22.675" height="13.227"
+                         viewBox="0 0 22.675 13.227">
+                        <g transform="translate(-1202.332 -569.89)">
+                            <g id="visibility" transform="translate(1202.332 504)">
+                                <g id="Group_125" data-name="Group 125" transform="translate(0 65.89)">
+                                    <g id="Group_124" data-name="Group 124" transform="translate(0 0)">
+                                        <path id="Path_1811" data-name="Path 1811"
+                                              d="M11.338,106.673c-5.821,0-11.008,6.051-11.226,6.309a.472.472,0,0,0,0,.61A23.646,23.646,0,0,0,4.9,117.723l2.961-2.961a3.778,3.778,0,0,1,4.954-4.954l2.435-2.435A11.54,11.54,0,0,0,11.338,106.673Z"
+                                              transform="translate(0 -106.673)" fill="#8d8c8c"/>
+                                    </g>
+                                </g>
+                                <g id="Group_127" data-name="Group 127" transform="translate(-0.165 64)">
+                                    <g id="Group_126" data-name="Group 126" transform="translate(4 5)">
+                                        <path id="Path_1812" data-name="Path 1812"
+                                              d="M83.783,72.234a17.322,17.322,0,0,0-5.5-4.818L67.8,77.907a10.882,10.882,0,0,0,4.734,1.21c5.821,0,11.008-6.051,11.226-6.309A.474.474,0,0,0,83.783,72.234ZM72.53,76.283a3.746,3.746,0,0,1-2.305-.806L75.5,70.2a3.759,3.759,0,0,1-2.973,6.085Z"
+                                              transform="translate(-65.027 -69)" fill="#8d8c8c"/>
+                                    </g>
+                                </g>
+                            </g>
+                            <path id="Path_1815" data-name="Path 1815"
+                                  d="M9564.13,665.037a3.176,3.176,0,0,1,.934.574,3.38,3.38,0,0,1,.644.674l2.746-2.828a9.769,9.769,0,0,0-.934-.516,8.338,8.338,0,0,0-.951-.371Z"
+                                  transform="translate(-8349 -92)" fill="#8d8c8c"/>
+                            <path id="Path_1816" data-name="Path 1816"
+                                  d="M9559.184,669.971a5.255,5.255,0,0,0,.516.836,4.222,4.222,0,0,0,.731.706L9558,673.951a9.586,9.586,0,0,1-.972-.474,7.607,7.607,0,0,1-.839-.567Z"
+                                  transform="translate(-8349 -92)" fill="#8d8c8c"/>
+                        </g>
+                    </svg>
+                    <svg id="hide-password" class="password-visibility position-absolute d-none"
+                         xmlns="http://www.w3.org/2000/svg" width="22.675" height="17.007"
+                         viewBox="0 0 22.675 17.007">
+                        <g transform="translate(0 -64)">
+                            <g id="Group_125" data-name="Group 125" transform="translate(0 65.89)">
+                                <g id="Group_124" data-name="Group 124" transform="translate(0 0)">
+                                    <path id="Path_1811" data-name="Path 1811"
+                                          d="M11.338,106.673c-5.821,0-11.008,6.051-11.226,6.309a.472.472,0,0,0,0,.61A23.646,23.646,0,0,0,4.9,117.723l2.961-2.961a3.778,3.778,0,0,1,4.954-4.954l2.435-2.435A11.54,11.54,0,0,0,11.338,106.673Z"
+                                          transform="translate(0 -106.673)" fill="#8d8c8c"/>
+                                </g>
+                            </g>
+                            <g id="Group_127" data-name="Group 127" transform="translate(2.835 64)">
+                                <g id="Group_126" data-name="Group 126" transform="translate(0 0)">
+                                    <path id="Path_1812" data-name="Path 1812"
+                                          d="M83.783,72.234a17.322,17.322,0,0,0-5.5-4.818L80.9,64.806a.472.472,0,0,0-.668-.668L64.165,80.2a.473.473,0,0,0,0,.668.468.468,0,0,0,.334.139.474.474,0,0,0,.334-.138L67.8,77.907a10.882,10.882,0,0,0,4.734,1.21c5.821,0,11.008-6.051,11.226-6.309A.474.474,0,0,0,83.783,72.234ZM72.53,76.283a3.746,3.746,0,0,1-2.305-.806L75.5,70.2a3.759,3.759,0,0,1-2.973,6.085Z"
+                                          transform="translate(-64.027 -64)" fill="#8d8c8c"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="d-flex align-items-center justify-content-between w-100 mb-6 flex-column flex-sm-row">
+                    <div id="date-picker" class="d-flex align-items-center mb-3 mb-sm-0">
+                        <div class="mr-2">
+                            <select name="day" id="day-picker" required>
+                                <option disabled selected value="">{% trans 'Gün' %}</option>
+                            </select>
+                        </div>
+                        <div class="mr-2">
+                            <select name="month" required>
+                                <option disabled selected value="">{% trans 'Ay' %}</option>
+                                <option value="1">{% trans 'Yan' %}</option>
+                                <option value="2">{% trans 'Fev' %}</option>
+                                <option value="3">{% trans 'Mar' %}</option>
+                                <option value="4">{% trans 'Apr' %}</option>
+                                <option value="5">{% trans 'May' %}</option>
+                                <option value="6">{% trans 'İyun' %}</option>
+                                <option value="7">{% trans 'İyul' %}</option>
+                                <option value="8">{% trans 'Avq' %}</option>
+                                <option value="9">{% trans 'Sen' %}</option>
+                                <option value="10">{% trans 'Okt' %}</option>
+                                <option value="11">{% trans 'Noy' %}</option>
+                                <option value="12">{% trans 'Dek' %}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select name="year" id="year-picker" required>
+                                <option disabled selected value="">{% trans 'İl' %}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="gender-picker" class="d-flex flex-row flex-sm-column">
+                        {% for radio in form.gender %}
+                            {% if forloop.first %}
+                                <label for="{{ radio.id_for_label }}" class="mr-4 mr-sm-0 d-flex align-items-center">
+                                    {{ radio.tag }}
+                                    <span>{{ radio.choice_label }}</span>
+                                </label>
+                            {% else %}
+                                <label for="{{ radio.id_for_label }}" class="d-flex align-items-center">
+                                    {{ radio.tag }}
+                                    <span>{{ radio.choice_label }}</span>
+                                </label>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-sm-row">
+                    <button class="button button--primary mb-3 mb-sm-0 mr-sm-4" type="submit">{% trans 'Qeydiyyat' %}</button>
+                    <button onclick="location.href='{% url "account:login" %}';" type="button" id="sign-up--login" class="button button--secondary">{% trans 'Daxil ol' %}</button>
+                </div>
+                <p class="sign-up__form-seperator">{% trans 'yaxud' %}</p>
+                <div class="mb-8 mb-lg-0">
+                     <a href="{% url 'social:begin' 'facebook' %}?next={% url 'account:account-edit' %}"><img class="sign-up__external mr-3" src="{% static 'wishx/assets/facebook@2x.png' %}"
+                                     alt="facebook"></a>
+                     <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'account:account-edit' %}"><img class="sign-up__external" src="{% static 'wishx/assets/google@2x.png' %}"
+                                     alt="google"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

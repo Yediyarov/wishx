@@ -1,0 +1,48 @@
+{% extends 'base/index.html' %}
+{% load static widget_tweaks i18n %}
+
+{% block content %}
+    <div class="mt-8 mb-12 text-center">
+            <h1 class="page-header">{% trans 'Tədbirlər' %}</h1>
+            <div id="wishes-container" class="row">
+                {% for wish in wishes %}
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 wish-list-card">
+                        <div class="events-card events-card--all">
+                        <div class="card__image-wrapper card__image-wrapper--events">
+                            <img class="card__image" src="{{ wish.get_cover }}" alt="event photo">
+                        </div>
+                        <div class="card__image-wrapper card__image-wrapper--user">
+                            {% if wish.image %}
+                                <img class="card__image" src="{{ wish.image.url }}" alt="user photo">
+                            {% elif wish.user.profile_picture %}
+                                <img class="card__image" src="{{ wish.user.get_profile_picture }}" alt="user photo">
+                            {% else %}
+                                <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="user photo">
+                            {% endif %}
+                        </div>
+                        <p class="events-card__user-name">{{ wish.name }} {{ wish.surname }}</p>
+                        <p class="events-card__event-name mb-5"><a href="{{ wish.get_absolute_url }}">{{ wish.title }}</a></p>
+                        <div class="event-info event-info--events-card mb-4">
+                            <div>
+                                <p class="event-info__header">{% trans 'Lazım olan məbləğ' %}</p>
+                                <p class="event-info__data">{{ wish.required_amount }} {{ wish.currency }}</p>
+                            </div>
+                            <div>
+                                <p class="event-info__header">{% trans 'Toplanan məbləğ' %}</p>
+                                <p class="event-info__data">{{ wish.accumulated_amount }} {{ wish.currency }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if is_paginated %}
+                {% if page_obj.has_next %}
+                    <button data-id="1" id="load_more" class="button button--secondary">{% trans 'Daha çox' %}</button>
+                {% endif %}
+            {% endif %}
+            <input id="request-url" type="hidden" value="{% url 'core:wishes-ajax' %}">
+            <input id="current-url" type="hidden" value="{% url 'core:wishes' %}">
+            <input id="all_wishes_count" type="hidden" value="{{ wishes_count }}">
+        </div>
+{% endblock content %}

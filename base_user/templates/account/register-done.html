@@ -1,0 +1,16 @@
+{% extends 'base/index.html' %}
+{% load static i18n %}
+{% block content %}
+    <div class="auth py-5">
+        <div class="container">
+            <div class="row justify-content-center flex-column align-items-center">
+                <h2 class="text-center">{% trans 'Uğurla qeydiyyatdan keçdiniz!' %}</h2>
+                <div class="col-lg-7 my-5">
+                    <div class="alert alert-success text-center">
+                        <p>{% trans 'Hesabınızı aktivləşdirmək üçün qeydiyyat zamanı bildirdiyiniz email-ə göndərilən emaili oxuyub, hesabınızı aktivləşdirin.' %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

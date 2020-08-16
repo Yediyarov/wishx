@@ -1,0 +1,81 @@
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #03c3a4;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 25px;
+    position: fixed;
+    z-index: 9999999999;
+    left: 50%;
+    bottom: 50%;
+    font-size: 17px;
+
+}
+
+.show-snackbar {
+    visibility: visible !important;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    -o-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30%;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30%;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.error_message {
+    margin-top: -15px !important;
+}
+
+.slug_error_message {
+    margin-top: 10px !important;
+}
+.error-text{
+    color: #ec5a5a;
+}
+.agree_with_conditions_error{
+    border:0.2rem solid #ec5a5a !important;
+}

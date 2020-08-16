@@ -1,0 +1,31 @@
+{% load static i18n %}
+{% for wish in wishes %}
+    <div class="col-sm-6 col-lg-4 col-xl-3 wish-list-card">
+        <div class="events-card events-card--all">
+            <div class="card__image-wrapper card__image-wrapper--events">
+                <img class="card__image" src="{{ wish.get_cover }}" alt="event photo">
+            </div>
+            <div class="card__image-wrapper card__image-wrapper--user">
+                {% if wish.image %}
+                    <img class="card__image" src="{{ wish.image.url }}" alt="user photo">
+                {% elif wish.user.profile_picture %}
+                    <img class="card__image" src="{{ wish.user.get_profile_picture }}" alt="user photo">
+                {% else %}
+                    <img class="card__image" src="{% static 'wishx/assets/default_user.png' %}" alt="user photo">
+                {% endif %}
+            </div>
+            <p class="events-card__user-name">{{ wish.name }} {{ wish.surname }}</p>
+            <p class="events-card__event-name mb-5"><a href="{{ wish.get_absolute_url }}">{{ wish.title }}</a></p>
+            <div class="event-info event-info--events-card mb-4">
+                <div>
+                    <p class="event-info__header">{% trans 'Lazım olan məbləğ' %}</p>
+                    <p class="event-info__data">{{ wish.required_amount }} {{ wish.currency }}</p>
+                </div>
+                <div>
+                    <p class="event-info__header">{% trans 'Toplanan məbləğ' %}</p>
+                    <p class="event-info__data">{{ wish.accumulated_amount }} {{ wish.currency }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,63 @@
+{% extends 'base/index.html' %}
+{% load static i18n base_filter %}
+{% block content %}
+    {% get_site_settings as site_settings %}
+    <section id="join-us">
+        <div class="row">
+            <div class="join-us__info col-6">
+{#                <h1 class="join-us__title">{% trans 'Arzularını bizimlə' %} <br class="d-block-370"> {% trans 'gerçəkləşdir' %}</h1>#}
+                <h1 class="join-us__title">{{ site_settings.main_page_first_section_title|default_if_none:'' }}</h1>
+{#                <p class="join-us__text">{% trans 'Qeydiyyatdan keçməklə arzularınıza' %} <br class="d-none d-lg-block"> {% trans '1 addım daha yaxınlaşın' %}</p>#}
+                <p class="join-us__text">{{ site_settings.main_page_first_section_text|default_if_none:'' }}</p>
+                {% if not request.user.is_authenticated %}
+                    <form id="join-us__form">
+{#                    <input type="text" placeholder="Emailinizi yazın" class="form-input form-input--join-us">#}
+                        <button onclick="location.href='{% url "account:register" %}';" type="button" class="button button--primary button--join-us">{% trans 'Qeydiyyat' %}</button>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <img class="join-us__image" src="{% static 'wishx/assets/esasshekil@2x.png' %}" alt="main photo">
+            </div>
+        </div>
+    </section>
+
+    <section id="steps">
+        <div class="steps row">
+            <div class="step__image-wrapper pl-4 col-lg-6 col-sm-5 col-6">
+                <img class="step__image" src="{% static 'wishx/assets/qeydiyyatdankecshekil@2x.png' %}" alt="step-1">
+            </div>
+            <div class="step__info pr-4 col-lg-6 col-sm-7 col-12">
+                <h2 class="step__info__title">
+                    {{ site_settings.main_page_second_section_title|default_if_none:'' }}
+                    <img class="step__info__number" src="{% static 'wishx/assets/1@2x.png' %}" alt="1">
+                </h2>
+                <p class="step__info__text">{{ site_settings.main_page_second_section_text|default_if_none:'' }}</p>
+            </div>
+        </div>
+        <div class="steps row">
+            <div class="step__info text-sm-right pl-4 col-lg-6 col-sm-7 col-12">
+                <h2 class="step__info__title">
+                    <img class="step__info__number" src="{% static 'wishx/assets/2@2x.png' %}" alt="2">
+                    {{ site_settings.main_page_third_section_title|default_if_none:'' }}
+                </h2>
+                <p class="step__info__text">{{ site_settings.main_page_third_section_text|default_if_none:'' }}</p>
+            </div>
+            <div class="step__image-wrapper pr-4 col-lg-6 col-sm-5 col-6">
+                <img class="step__image" src="{% static 'wishx/assets/arzuyaratshekil@2x.png' %}" alt="step-1">
+            </div>
+        </div>
+        <div class="steps row">
+            <div class="step__image-wrapper pl-4 col-lg-6 col-sm-5 col-6">
+                <img class="step__image" src="{% static 'wishx/assets/pultoplashekil@2x.png' %}" alt="step-1">
+            </div>
+            <div class="step__info pr-4 col-lg-6 col-sm-7 col-12">
+                <h2 class="step__info__title">
+                    {{ site_settings.main_page_fourth_section_title|default_if_none:'' }}
+                    <img class="step__info__number" src="{% static 'wishx/assets/3@2x.png' %}" alt="3">
+                </h2>
+                <p class="step__info__text">{{ site_settings.main_page_fourth_section_text|default_if_none:'' }}</p>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
